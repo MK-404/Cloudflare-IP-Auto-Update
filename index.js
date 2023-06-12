@@ -40,7 +40,7 @@ setInterval(async () => {
   const newIp = await axios.get('https://api.ipify.org?format=json')
     .then(response => response.data.ip)
     .catch(error => console.error(`Failed to retrieve public IP address: ${error}`))
-  if (newIp !== currentIp) {
+  if (newIp !== currentIp && newIp !== undefined) {
     console.log(`IP address has changed to ${newIp}`)
     currentIp = newIp
     await updateARecord(newIp)
